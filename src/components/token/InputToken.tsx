@@ -3,7 +3,7 @@ import { AppContext } from "../../context/ContextProvider";
 
 const InputToken = () => {
   const [input, setInput] = useState("");
-  const { saveToken, token } = useContext(AppContext);
+  const { token, setToken } = useContext(AppContext);
 
   if (token)
     return (
@@ -35,7 +35,7 @@ const InputToken = () => {
         onChange={(e) => setInput(e.target.value)}
       />
       <div className="mt-2">
-        <button type="submit" onClick={() => saveToken(input)}>
+        <button type="submit" onClick={() => setToken(input)}>
           Save
         </button>
       </div>

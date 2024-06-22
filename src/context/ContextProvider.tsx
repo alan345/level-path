@@ -6,12 +6,12 @@ export const AppContext = createContext<{
   setBirths: (births: Births[]) => void;
   births: Array<{ text: string; year: number }>;
   token: string;
-  saveToken: (token: string) => void;
+  setToken: (token: string) => void;
 }>({
   setBirths: () => {},
   births: [],
   token: "",
-  saveToken: () => {},
+  setToken: () => {},
 });
 
 type Props = {
@@ -19,10 +19,10 @@ type Props = {
 };
 const ContextProvider = (props: Props) => {
   const [births, setBirths] = useState<any>([]);
-  const [token, saveToken] = useState("");
+  const [token, setToken] = useState("");
 
   return (
-    <AppContext.Provider value={{ setBirths, births, token, saveToken }}>
+    <AppContext.Provider value={{ setBirths, births, token, setToken }}>
       {props.children}
     </AppContext.Provider>
   );
