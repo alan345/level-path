@@ -1,11 +1,11 @@
-import levelpath from "./images/levelpath.png";
-import GetBirths from "./GetBirths";
-import Births from "./Births";
-import InputToken from "./InputToken";
+import levelpath from "../images/levelpath.png";
+import GetBirths from "../GetBirths";
+import Births from "../Births";
+import InputToken from "../inputToken/InputToken";
 import { useContext } from "react";
-import { AppContext } from "./context/ContextProvider";
+import { AppContext } from "../context/ContextProvider";
 
-const SubApp = () => {
+const Main = () => {
   const { token } = useContext(AppContext);
   return (
     <div className="min-h-screen bg-gradient-to-r from-[#EFF8E7] via-[#CEDBC9] to-[#F9FFEF]">
@@ -14,6 +14,9 @@ const SubApp = () => {
       </header>
 
       <div className="text-center mt-2">
+        <h1>Levelpath frontend take-home task</h1>
+      </div>
+      <div className="text-center mt-8">
         <InputToken />
       </div>
       {token && (
@@ -30,4 +33,4 @@ const SubApp = () => {
   );
 };
 
-export default SubApp;
+export default Main;

@@ -1,10 +1,10 @@
-import SubApp from "./SubApp";
+import Main from "./main/Main";
 import ContextProvider from "./context/ContextProvider";
 
 const App = () => {
   return (
     <ContextProvider>
-      <SubApp />
+      <Main />
     </ContextProvider>
   );
 };
