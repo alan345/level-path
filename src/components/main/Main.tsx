@@ -24,7 +24,7 @@ const Main = () => {
           <div className="text-center mt-10">
             <GetBirths />
           </div>
-          <div className="ml-80 mt-10">
+          <div className="mt-10">
             <Births />
           </div>
         </div>

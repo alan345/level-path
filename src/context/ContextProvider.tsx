@@ -1,9 +1,8 @@
 import { createContext, useState } from "react";
-// import axios from "axios";
+import { Birth } from "../components/births/Birth.type";
 
-export type Births = any;
 export const AppContext = createContext<{
-  setBirths: (births: Births[]) => void;
+  setBirths: (births: Birth[]) => void;
   births: Array<{ text: string; year: number }>;
   token: string;
   setToken: (token: string) => void;
@@ -18,7 +17,7 @@ type Props = {
   children: React.ReactNode;
 };
 const ContextProvider = (props: Props) => {
-  const [births, setBirths] = useState<any>([]);
+  const [births, setBirths] = useState<Birth[]>([]);
   const [token, setToken] = useState("");
 
   return (
