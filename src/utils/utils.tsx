@@ -1,4 +1,4 @@
-import { StateGetBirths } from "./GetBirths";
+import { StateGetBirths } from "../components/births/GetBirths";
 
 const utils = {
   getStateFriendly: (state: StateGetBirths) => {

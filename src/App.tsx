@@ -1,4 +1,4 @@
-import Main from "./main/Main";
+import Main from "./components/main/Main";
 import ContextProvider from "./context/ContextProvider";
 
 const App = () => {

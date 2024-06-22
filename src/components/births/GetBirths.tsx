@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
-import { AppContext } from "./context/ContextProvider";
+import { AppContext } from "../../context/ContextProvider";
 import axios, { AxiosResponse } from "axios";
-import utils from "./utils";
+import utils from "../../utils/utils";
 
 export type StateGetBirths = "init" | "loading" | "loaded" | "error";
 

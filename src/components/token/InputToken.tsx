@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { AppContext } from "../context/ContextProvider";
+import { AppContext } from "../../context/ContextProvider";
 
 const InputToken = () => {
   const [input, setInput] = useState("");

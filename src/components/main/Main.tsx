@@ -1,9 +1,9 @@
-import levelpath from "../images/levelpath.png";
-import GetBirths from "../GetBirths";
-import Births from "../Births";
-import InputToken from "../inputToken/InputToken";
+import levelpath from "../../images/levelpath.png";
+import GetBirths from "../births/GetBirths";
+import Births from "../births/Births";
+import InputToken from "../token/InputToken";
 import { useContext } from "react";
-import { AppContext } from "../context/ContextProvider";
+import { AppContext } from "../../context/ContextProvider";
 
 const Main = () => {
   const { token } = useContext(AppContext);
