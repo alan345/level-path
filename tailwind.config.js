@@ -1,20 +1,18 @@
-const colors = require('tailwindcss/colors')
+import { white, blue, purple, red} from 'tailwindcss/colors'
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: [
-    "./src/**/*.{js,jsx,ts,tsx}",
-  ],
-  theme: {
-    extend: {},
-    colors: {
-      transparent: 'transparent',
-      current: 'currentColor',
-      'white': colors.white,
-      'blue': colors.blue,
-      'purple': colors.purple,
-     
-      'primary': '#193512',
-    }
-  },
-  plugins: [],
+export const content = [
+  "./src/**/*.{js,jsx,ts,tsx}",
+]
+export const theme = {
+  extend: {},
+  colors: {
+    transparent: 'transparent',
+    current: 'currentColor',
+    'white': white,
+    'blue': blue,
+    'purple': purple,
+    'red': red,
+    'primary': '#193512',
+  }
 }
+export const plugins = []

@@ -8,7 +8,7 @@ const Births = () => {
     <div>
       <h3>{births.length} Births</h3>
       <div className="mt-4">
-        <ul className="list-discmarker:text-green list-outside list-disc ml-6">
+        <ul className="list-discmarker:text-green list-outside list-disc">
           {births.map((birth: any, i) => (
             <li key={i}>
               {birth.year}: {birth.text}
