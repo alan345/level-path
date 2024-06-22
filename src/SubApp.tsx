@@ -3,17 +3,19 @@ import levelpath from "./images/levelpath.png";
 import { AppContext } from "./ContextProvider";
 
 const SubApp = () => {
-  const { theme, setTheme } = useContext(AppContext);
+  const { getBirths, births } = useContext(AppContext);
   return (
-    <div className="h-screen bg-gradient-to-r from-[#EFF8E7] via-[#CEDBC9] to-[#F9FFEF]">
+    <div className="min-h-screen bg-gradient-to-r from-[#EFF8E7] via-[#CEDBC9] to-[#F9FFEF]">
       <header className="text-center flex justify-center items-center">
         <img src={levelpath} alt="logo" className="w-96 object-center" />
       </header>
       <div className="text-center mt-10">
-        <p>The current theme is {theme}.</p>
-        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
-          Change theme
-        </button>
+        <button onClick={getBirths}>getInfo</button>
+        {births.map((birth: any, i) => (
+          <p key={i}>
+            {birth.year}: {birth.text}
+          </p>
+        ))}
       </div>
     </div>
   );

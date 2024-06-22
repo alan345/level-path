@@ -4,12 +4,8 @@
 
 @layer base {
     button {
-      @apply bg-transparent hover:bg-[#193512] text-[#193512] font-semibold hover:text-white py-2 px-4 border border-[#193512] hover:border-transparent rounded;
+      @apply bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded;
     }
  
-    :root {
-        --color-primary: 255 115 179;
-        --color-secondary: 111 114 185;
-        /* ... */
-      }
+
   }
