@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import levelpath from "./images/levelpath.png";
-import { MyContext } from "./ThemeContextProvider";
+import { AppContext } from "./ContextProvider";
 
 const SubApp = () => {
-  const { theme, setTheme } = useContext(MyContext);
+  const { theme, setTheme } = useContext(AppContext);
   return (
     <div className="h-screen bg-gradient-to-r from-[#EFF8E7] via-[#CEDBC9] to-[#F9FFEF]">
       <header className="text-center flex justify-center items-center">
