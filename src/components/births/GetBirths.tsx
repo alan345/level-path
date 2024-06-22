@@ -29,6 +29,11 @@ const GetBirths = () => {
           Authorization: `Bearer ${token}`,
         },
       });
+      if (!response?.data) {
+        setError("No data found");
+        setState("error");
+        return;
+      }
       const births: Birth[] = response.data.births;
       setBirths(births);
       setState("init");
