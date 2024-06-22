@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { AppContext } from "./ContextProvider";
+import { AppContext } from "./context/ContextProvider";
 import axios, { AxiosResponse } from "axios";
 import utils from "./utils";
 
@@ -11,6 +11,11 @@ const GetBirths = () => {
   const [error, setError] = useState("");
   const { setBirths, token } = useContext(AppContext);
   const getBirths = async () => {
+    if (!token) {
+      setError("Token is required");
+      setState("error");
+      return;
+    }
     setState("loading");
     console.log("This is a testa");
     const today = new Date();
@@ -31,10 +36,8 @@ const GetBirths = () => {
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setError(`${error.message} - ${error.response?.data.httpReason}`);
-        // handleAxiosError(error);
       } else {
         setError("Unexpected error");
-        // handleUnexpectedError(error);
       }
       setState("error");
       console.log(error);

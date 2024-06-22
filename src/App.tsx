@@ -1,5 +1,5 @@
 import SubApp from "./SubApp";
-import ContextProvider from "./ContextProvider";
+import ContextProvider from "./context/ContextProvider";
 
 const App = () => {
   return (

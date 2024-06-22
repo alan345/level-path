@@ -3,7 +3,7 @@ import GetBirths from "./GetBirths";
 import Births from "./Births";
 import InputToken from "./InputToken";
 import { useContext } from "react";
-import { AppContext } from "./ContextProvider";
+import { AppContext } from "./context/ContextProvider";
 
 const SubApp = () => {
   const { token } = useContext(AppContext);
