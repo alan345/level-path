@@ -7,13 +7,15 @@ const Births = () => {
   return (
     <div>
       <h3>{births.length} Births</h3>
-      <ul className="list-discmarker:text-green list-outside list-disc ml-6">
-        {births.map((birth: any, i) => (
-          <li key={i}>
-            {birth.year}: {birth.text}
-          </li>
-        ))}
-      </ul>
+      <div className="mt-4">
+        <ul className="list-discmarker:text-green list-outside list-disc ml-6">
+          {births.map((birth: any, i) => (
+            <li key={i}>
+              {birth.year}: {birth.text}
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

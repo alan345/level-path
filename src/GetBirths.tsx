@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "./ContextProvider";
 import axios from "axios";
+import utils from "./utils";
+
+export type StateGetBirths = "init" | "loading" | "loaded";
 
 const GetBirths = () => {
+  const [state, setState] = useState<StateGetBirths>("init");
   const { setBirths } = useContext(AppContext);
   const getBirths = async () => {
+    setState("loading");
     console.log("This is a testa");
     const today = new Date();
     const month = String(today.getMonth() + 1).padStart(2, "0");
@@ -21,12 +26,19 @@ const GetBirths = () => {
       console.log(data);
       console.log(data.births);
       setBirths(data.births);
+      setState("init");
     } catch (error) {
       console.log(error);
     }
   };
 
-  return <button onClick={getBirths}>getInfo</button>;
+  return (
+    <>
+      <button disabled={state === "loading"} onClick={getBirths}>
+        {utils.getStateFriendly(state)}
+      </button>
+    </>
+  );
 };
 
 export default GetBirths;
