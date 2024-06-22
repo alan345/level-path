@@ -1,5 +1,4 @@
 import { FC, createContext, useState } from "react";
-// import Child from "./Child";
 
 type Theme = "light" | "dark";
 

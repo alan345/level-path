@@ -9,10 +9,11 @@ const SubApp = () => {
       <header className="text-center flex justify-center items-center">
         <img src={levelpath} alt="logo" className="w-96 object-center" />
       </header>
-      <p>The current theme is {theme}.</p>
-      <button onClick={() => setTheme("dark")}>Change theme</button>
       <div className="text-center mt-10">
-        <button>Click me</button>
+        <p>The current theme is {theme}.</p>
+        <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+          Change theme
+        </button>
       </div>
     </div>
   );
