@@ -12,7 +12,7 @@ jest.mock("../../utils/utils", () => ({
 }));
 
 jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+// const mockedAxios = axios as jest.Mocked<typeof axios>;
 // Mock useContext
 const mockSetBirths = jest.fn();
 const mockContextValue = {

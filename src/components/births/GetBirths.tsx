@@ -31,8 +31,7 @@ const GetBirths = () => {
           Authorization: `Bearer ${tokenClean}`,
         },
       });
-      console.log("alan");
-      console.log(response);
+
       if (!response?.data) {
         setError("No data found");
         setState("error");
