@@ -6,13 +6,10 @@ const Births = () => {
   if (!births.length) return null;
   return (
     <div>
-      <h3>
-        On this day ({new Date().toDateString()}), there were {births.length}{" "}
-        Births.
-      </h3>
-      <div className="mt-4">
+      <h3>On this day, there were {births.length} Births.</h3>
+      <div className="mt-4 ml-4">
         <ul className="list-discmarker:text-green list-outside list-disc">
-          {births.map((birth: any, i) => (
+          {births.map((birth, i) => (
             <li key={i}>
               {birth.year}: {birth.text}
             </li>

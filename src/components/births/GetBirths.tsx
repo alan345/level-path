@@ -42,13 +42,12 @@ const GetBirths = () => {
       setBirths(births);
       setState("loaded");
     } catch (error) {
+      setState("error");
       if (axios.isAxiosError(error)) {
         setError(`${error.message} - ${error.response?.data.httpReason}`);
       } else {
         setError("Unexpected error");
       }
-      setState("error");
-      console.log(error);
     }
   };
 
