@@ -11,14 +11,16 @@ describe("utils.getStateFriendly", () => {
   });
 
   it("returns 'Error. Please try again or refresh the page.' when state is 'error'", () => {
-    expect(utils.getStateFriendly("error")).toBe("Error. Please try again or refresh the page.");
+    expect(utils.getStateFriendly("error")).toBe(
+      "Error. Please try again or refresh the page."
+    );
   });
 
   it("returns 'Loading...' when state is 'loading'", () => {
     expect(utils.getStateFriendly("loading")).toBe("Loading...");
   });
 
-  it("returns 'a' for any other state", () => {
-    expect(utils.getStateFriendly("unknown" as StateGetBirths)).toBe("a");
+  it("returns '' for any other state", () => {
+    expect(utils.getStateFriendly("unknown" as StateGetBirths)).toBe("");
   });
 });

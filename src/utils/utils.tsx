@@ -7,7 +7,7 @@ const utils = {
     if (state === "error")
       return "Error. Please try again or refresh the page.";
     if (state === "loading") return "Loading...";
-    return "a";
+    return "";
   },
 };
 
