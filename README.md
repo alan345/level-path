@@ -29,6 +29,10 @@ Implement a list of today's birthdays using Wikipedia's "On this day" API.
 
 # version: 2023-07-31
 
+# Printscreen
+<img width="1536" alt="image" src="https://github.com/alan345/level-path/assets/15246526/bb55a285-c9bf-4ad5-84d5-82ff810188c2">
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
