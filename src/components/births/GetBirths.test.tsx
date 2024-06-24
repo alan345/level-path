@@ -28,7 +28,8 @@ describe("GetBirths Component", () => {
   beforeEach(() => {
     // Here we configure the mock response for Axios using axios.mockResolvedValue.
     // This ensures that every call to Axios in every test returns the specified data.
-
+  });
+  it("should fetch and display births on button click", async () => {
     (axios as unknown as jest.Mock).mockResolvedValue({
       data: {
         births: [
@@ -37,18 +38,16 @@ describe("GetBirths Component", () => {
         ],
       },
     });
-  });
-  it("should fetch and display births on button click", async () => {
     render(<GetBirths />, { wrapper: mockContextProvider });
 
     // mockedAxios.get.mockResolvedValue(mockBirths);
-    const button = screen.getByRole("button");
+    // const button = ;
 
     expect(screen.getByRole("button")).toHaveTextContent(
       utils.getStateFriendly("init")
     );
     // expect(screen.getByText("On this day, there were")).toBeInTheDocument();
-    fireEvent.click(button);
+    fireEvent.click(screen.getByRole("button"));
 
     await waitFor(() => expect(axios).toHaveBeenCalledTimes(1));
 
@@ -62,10 +61,35 @@ describe("GetBirths Component", () => {
         utils.getStateFriendly("loaded")
       );
     });
+  });
+  it("should throw an error", async () => {
+    (axios as unknown as jest.Mock).mockRejectedValue({
+      message: "Network Error",
+      response: { data: { httpReason: "Bad Request" } },
+    });
+    render(<GetBirths />, { wrapper: mockContextProvider });
 
-    // await waitFor(() => {
-    //   expect(screen.getByText(/On this day, there were 2 Births/)).toBeInTheDocument();
-    // });
+    // mockedAxios.get.mockResolvedValue(mockBirths);
+    // const button = ;
+
+    expect(screen.getByRole("button")).toHaveTextContent(
+      utils.getStateFriendly("init")
+    );
+    // expect(screen.getByText("On this day, there were")).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button"));
+
+    await waitFor(() => expect(axios).toHaveBeenCalledTimes(1));
+
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toHaveTextContent(
+        utils.getStateFriendly("loading")
+      );
+    });
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toHaveTextContent(
+        utils.getStateFriendly("error")
+      );
+    });
   });
 
   // it("should display an error when the token is missing", async () => {
