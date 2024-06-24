@@ -1,12 +1,8 @@
 import { createContext, useState } from "react";
 import { Birth } from "../components/births/Birth.type";
+import { ContextType } from "./Context.type";
 
-export const AppContext = createContext<{
-  setBirths: (births: Birth[]) => void;
-  births: Array<{ text: string; year: number }>;
-  token: string;
-  setToken: (token: string) => void;
-}>({
+export const AppContext = createContext<ContextType>({
   setBirths: () => {},
   births: [],
   token: "",
