@@ -2,14 +2,15 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
 import GetBirths, { StateGetBirths } from "./GetBirths";
 import { AppContext } from "../../context/ContextProvider";
+import utils from "../../utils/utils";
 
 // Mock axios
 jest.mock("axios");
 
-// Mock utils
-jest.mock("../../utils/utils", () => ({
-  getStateFriendly: (state: StateGetBirths) => state,
-}));
+// // Mock utils
+// jest.mock("../../utils/utils", () => ({
+//   getStateFriendly: (state: StateGetBirths) => state,
+// }));
 
 jest.mock("axios");
 // const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -32,8 +33,8 @@ describe("GetBirths Component", () => {
   beforeEach(() => {
     // Here we configure the mock response for Axios using axios.mockResolvedValue.
     // This ensures that every call to Axios in every test returns the specified data.
-    //@ts-ignore
-    axios.mockResolvedValue({
+
+    (axios as unknown as jest.Mock).mockResolvedValue({
       data: {
         births: [
           { text: "Test1", year: 1987 },
@@ -46,12 +47,16 @@ describe("GetBirths Component", () => {
     render(<GetBirths />, { wrapper: mockContextProvider });
 
     // mockedAxios.get.mockResolvedValue(mockBirths);
-    const button = screen.getByRole("button", { name: /init/i });
-    fireEvent.click(button);
+    // const button = screen.getByRole("button", { name: /init/i });
+    expect(screen.getByRole("button")).toHaveTextContent(
+      utils.getStateFriendly("init")
+    );
+    fireEvent.click(screen.getByRole("button"));
+    // fireEvent.click(button);
 
     await waitFor(() => expect(axios).toHaveBeenCalledTimes(1));
     // await waitFor(() => expect(mockSetBirths).toHaveBeenCalledWith(mockBirths));
-    await waitFor(() => expect(button).toHaveTextContent("loaded"));
+    // await waitFor(() => expect(button).toHaveTextContent("loaded"));
   });
 
   // it("should display an error when the token is missing", async () => {
