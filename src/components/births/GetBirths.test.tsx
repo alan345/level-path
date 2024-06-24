@@ -62,7 +62,7 @@ describe("GetBirths Component", () => {
       );
     });
   });
-  it("should throw an error", async () => {
+  it("should display an error message on axios error", async () => {
     (axios as unknown as jest.Mock).mockRejectedValue({
       message: "Network Error",
       response: { data: { httpReason: "Bad Request" } },
