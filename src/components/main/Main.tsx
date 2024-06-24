@@ -4,11 +4,12 @@ import Births from "../births/Births";
 import InputToken from "../token/InputToken";
 import { useContext } from "react";
 import { AppContext } from "../../context/ContextProvider";
+import BackgroundPage from "./BackgroundPage";
 
 const Main = () => {
   const { token } = useContext(AppContext);
   return (
-    <div className="min-h-screen bg-gradient-to-r from-[#EFF8E7] via-[#CEDBC9] to-[#F9FFEF]">
+    <BackgroundPage>
       <header className="text-center flex justify-center items-center">
         <img src={levelpath} alt="logo" className="w-96 object-center" />
       </header>
@@ -29,7 +30,7 @@ const Main = () => {
           </div>
         </div>
       )}
-    </div>
+    </BackgroundPage>
   );
 };
 
