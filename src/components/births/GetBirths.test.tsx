@@ -1,16 +1,11 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import axios from "axios";
-import GetBirths, { StateGetBirths } from "./GetBirths";
+import GetBirths from "./GetBirths";
 import { AppContext } from "../../context/ContextProvider";
 import utils from "../../utils/utils";
 
 // Mock axios
 jest.mock("axios");
-
-// // Mock utils
-// jest.mock("../../utils/utils", () => ({
-//   getStateFriendly: (state: StateGetBirths) => state,
-// }));
 
 jest.mock("axios");
 // const mockedAxios = axios as jest.Mocked<typeof axios>;
@@ -47,16 +42,30 @@ describe("GetBirths Component", () => {
     render(<GetBirths />, { wrapper: mockContextProvider });
 
     // mockedAxios.get.mockResolvedValue(mockBirths);
-    // const button = screen.getByRole("button", { name: /init/i });
+    const button = screen.getByRole("button");
+
     expect(screen.getByRole("button")).toHaveTextContent(
       utils.getStateFriendly("init")
     );
-    fireEvent.click(screen.getByRole("button"));
-    // fireEvent.click(button);
+    // expect(screen.getByText("On this day, there were")).toBeInTheDocument();
+    fireEvent.click(button);
 
     await waitFor(() => expect(axios).toHaveBeenCalledTimes(1));
-    // await waitFor(() => expect(mockSetBirths).toHaveBeenCalledWith(mockBirths));
-    // await waitFor(() => expect(button).toHaveTextContent("loaded"));
+
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toHaveTextContent(
+        utils.getStateFriendly("loading")
+      );
+    });
+    await waitFor(() => {
+      expect(screen.getByRole("button")).toHaveTextContent(
+        utils.getStateFriendly("loaded")
+      );
+    });
+
+    // await waitFor(() => {
+    //   expect(screen.getByText(/On this day, there were 2 Births/)).toBeInTheDocument();
+    // });
   });
 
   // it("should display an error when the token is missing", async () => {
