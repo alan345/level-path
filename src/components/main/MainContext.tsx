@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 
 // First, we need to create a context
-export const MyContext = React.createContext<MyContextType | undefined>(
-  undefined
-);
+export const MyContext = React.createContext<MyContextType>({
+  someFunction: () => {},
+  someValue: "",
+});
 
 // Then, we can define the type for the context value
 type MyContextType = {
@@ -17,11 +18,11 @@ function MyComponent() {
   // and returns the current context value, which is determined by the nearest
   // <MyContext.Provider> above the component in the tree
   const context = useContext(MyContext);
-  if (!context) return null;
+
   // Now we can use the context value in our component
   return (
     <div>
-      {context.someValue}
+      <div>{context.someValue}</div>
       <button onClick={context.someFunction}>Click me</button>
     </div>
   );
@@ -29,13 +30,13 @@ function MyComponent() {
 
 // To provide a context value for a tree of components, we can use a context provider:
 const MainContext = () => {
-  const [someValue, setSomeValue] = React.useState("Hello, world!");
+  const [someValue, setSomeValue] = React.useState("");
 
   return (
     <MyContext.Provider
       value={{
         someValue,
-        someFunction: () => setSomeValue("Goodbye, world!"),
+        someFunction: () => setSomeValue("Hello, world!"),
       }}
     >
       {/* The context value will be available to all components below this provider in the tree */}
